@@ -1,8 +1,10 @@
 :root {
     --bg-color: #212121;
-    --bg-oposite-color: lightgray;
+    --bg-opposite-color: lightgray;
     --text-color: lightgray;
     --text-oposite-color: #212121;
+    --task-height: 2rem;
+    --task-width: 5vh;
 
 }
 
@@ -60,4 +62,55 @@ main{
     width: 90vw;
     height: 60vh; /* for testing */
     background-color: darkgrey;
+    display: flex;
+    flex-direction: column;
+}
+
+.task{
+    display: flex;
+    gap: 8px;
+}
+
+.task-color{
+    background-color: aliceblue;
+    height: var(--task-height);
+    width: var(--task-height);
+    display: inline-block;
+    overflow: hidden;
+    transition: height 0.3s ease, width 0.3s ease;
+}
+
+.task-color:hover{
+    height: calc(var(--task-height) + 4rem);
+    width: calc(var(--task-height) + 3rem);
+    overflow: visible;
+}
+
+.task-content{
+    flex: 3;
+    height: var(--task-height);
+}
+
+.task-time{
+    flex: 1;
+    height: var(--task-height);
+}
+
+.task-deadline{
+    flex: 1;
+    height: var(--task-height);
+}
+
+.task-notifier{
+    height: var(--task-height);
+    width: var(--task-height);
+}
+
+.task-delete-btn{
+    height: var(--task-height);
+    width: var(--task-height);
+}
+
+#add-task-btn{
+    align-self: center;
 }
