@@ -3,9 +3,14 @@
     --bg-opposite-color: lightgray;
     --text-color: lightgray;
     --text-oposite-color: #212121;
-    --task-height: 2rem;
-    --task-width: 5vh;
+    --row-height: 2rem;
 
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    border: 0;
 }
 
 body {
@@ -26,7 +31,7 @@ a{
 }
 /* === Header === */
 
-#top-navbar{
+#top-nav-bar{
     position: fixed;
     top: 0;
     left: 0;
@@ -34,7 +39,7 @@ a{
     right: 0;
 }
 
-#top-navbar ul {
+#top-nav-bar ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -44,7 +49,7 @@ a{
     padding: 10px 20px;
 }
 
-#top-navbar li {
+#top-nav-bar li {
     margin: 0 10px;
     display: flex;
     justify-content: center;
@@ -58,59 +63,65 @@ main{
     display: block;
 }
 
-#task-list-table{
+#schedule-list{
     width: 90vw;
     height: 60vh; /* for testing */
     background-color: darkgrey;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    overflow: auto;
 }
 
-.task{
+.schedule-row{
+    margin: 0.25rem;
+    width: 98%;
     display: flex;
-    gap: 8px;
+    align-items: center;
+    position: relative;
+    gap: 0.25rem;
 }
 
-.task-color{
+.schedule-priority{
     background-color: aliceblue;
-    height: var(--task-height);
-    width: var(--task-height);
-    display: inline-block;
+    height: var(--row-height);
+    width: var(--row-height);
+    position: absolute;
+    top: 0;
     overflow: hidden;
-    transition: height 0.3s ease, width 0.3s ease;
 }
 
-.task-color:hover{
-    height: calc(var(--task-height) + 4rem);
-    width: calc(var(--task-height) + 3rem);
+.schedule-priority:hover{
+    height: calc(var(--row-height) + 1.75rem);
+    width: calc(var(--row-height) + 3rem);
     overflow: visible;
 }
 
-.task-content{
+.schedule-content{
+    margin-left: calc(var(--row-height) + 0.25rem);
     flex: 3;
-    height: var(--task-height);
+    min-width: 0;
+    height: var(--row-height);
 }
 
-.task-time{
-    flex: 1;
-    height: var(--task-height);
+.schedule-time{
+    height: var(--row-height);
 }
 
-.task-deadline{
-    flex: 1;
-    height: var(--task-height);
+.schedule-deadline{
+    height: var(--row-height);
 }
 
-.task-notifier{
-    height: var(--task-height);
-    width: var(--task-height);
+.schedule-notify{
+    min-height: var(--row-height);
+    min-width: var(--row-height);
 }
 
-.task-delete-btn{
-    height: var(--task-height);
-    width: var(--task-height);
+.schedule-delete{
+    min-height: var(--row-height);
+    min-width: var(--row-height);
 }
 
-#add-task-btn{
-    align-self: center;
+#add-schedule{
+    margin: 0.5rem;
 }
