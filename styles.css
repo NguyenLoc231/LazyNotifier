@@ -2,7 +2,7 @@
     --bg-color: #212121;
     --bg-opposite-color: lightgray;
     --text-color: lightgray;
-    --text-oposite-color: #212121;
+    --text-opposite-color: #212121;
     --row-height: 2rem;
 
 }
@@ -10,12 +10,10 @@
 *{
     padding: 0;
     margin: 0;
-    border: 0;
+    box-sizing: border-box;
 }
 
 body {
-    margin: 5vh 0 0 0;
-    padding: 0;
     font-family: Arial, sans-serif;
     color: var(--text-color);
     background-color: var(--bg-color);
@@ -32,17 +30,16 @@ a{
 /* === Header === */
 
 #top-nav-bar{
+    background: black;
     position: fixed;
     top: 0;
     left: 0;
-    bottom: 95vh;
     right: 0;
+    min-height: fit-content;
 }
 
 #top-nav-bar ul {
     list-style-type: none;
-    margin: 0;
-    padding: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -58,10 +55,6 @@ a{
 }
 
 /* === Main === */
-
-main{
-    display: block;
-}
 
 #schedule-list{
     width: 90vw;
