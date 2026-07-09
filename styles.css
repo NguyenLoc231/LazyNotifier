@@ -75,7 +75,7 @@ a{
     gap: 0.25rem;
 }
 
-.schedule-priority{
+.schedule-row__color{
     background-color: aliceblue;
     height: var(--row-height);
     width: var(--row-height);
@@ -84,37 +84,37 @@ a{
     overflow: hidden;
 }
 
-.schedule-priority:hover{
+.schedule-row__color:hover{
     height: calc(var(--row-height) + 1.75rem);
     width: calc(var(--row-height) + 3rem);
     overflow: visible;
 }
 
-.schedule-content{
+.schedule-row__content{
     margin-left: calc(var(--row-height) + 0.25rem);
     flex: 3;
     min-width: 0;
     height: var(--row-height);
 }
 
-.schedule-time{
+.schedule-row__time{
     height: var(--row-height);
 }
 
-.schedule-deadline{
+.schedule-row__deadline{
     height: var(--row-height);
 }
 
-.schedule-notify{
+.schedule-row__notify{
     min-height: var(--row-height);
     min-width: var(--row-height);
 }
 
-.schedule-delete{
+.schedule-row__delete{
     min-height: var(--row-height);
     min-width: var(--row-height);
 }
 
-#add-schedule{
+#add-schedule-row{
     margin: 0.5rem;
 }
