@@ -66,9 +66,11 @@ a{
     overflow: auto;
 }
 
+#schedule-row-container{
+    width: 98%;
+}
 .schedule-row{
     margin: 0.25rem;
-    width: 98%;
     display: flex;
     align-items: center;
     position: relative;
@@ -88,6 +90,7 @@ a{
     height: calc(var(--row-height) + 1.75rem);
     width: calc(var(--row-height) + 3rem);
     overflow: visible;
+    z-index: 2;
 }
 
 .schedule-row__content{
