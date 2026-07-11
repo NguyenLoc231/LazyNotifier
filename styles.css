@@ -4,7 +4,7 @@
     --text-color: lightgray;
     --text-opposite-color: #212121;
     --row-height: 2rem;
-
+    --gap-distance: 0.25rem;
 }
 
 *{
@@ -26,6 +26,10 @@ body {
 
 a{
     text-decoration: none;
+}
+
+button {
+    cursor: pointer;
 }
 /* === Header === */
 
@@ -69,32 +73,65 @@ a{
 #schedule-row-container{
     width: 98%;
 }
+
 .schedule-row{
-    margin: 0.25rem;
+    margin: var(--gap-distance) 0;
+    background-color: red;
+    min-height: fit-content;
+    min-width: fit-content;
     display: flex;
     align-items: center;
     position: relative;
-    gap: 0.25rem;
+    gap: var(--gap-distance);
+}
+
+.schedule-row *{
+    background-color: transparent;
+    border: none;
+    border-radius: 0.1rem;
+}
+
+.schedule-row button{
+    background-color: white;
+    border: 0.1rem solid black;
 }
 
 .schedule-row__color{
-    background-color: aliceblue;
+    background-color: white;
+    border: 0.1rem solid black;
     height: var(--row-height);
     width: var(--row-height);
+    position: relative;
+}
+
+.schedule-row__color-display{    
     position: absolute;
-    top: 0;
+    background-color: white;
+    border: 0.1rem solid black;
+    top: 0.2rem;
+    right: 0.2rem;
+    bottom: 0.2rem;
+    left: 0.2rem;
     overflow: hidden;
 }
 
-.schedule-row__color:hover{
-    height: calc(var(--row-height) + 1.75rem);
-    width: calc(var(--row-height) + 3rem);
-    overflow: visible;
+.schedule-row__color-dropdown{
+    top: 100%;
+    padding: var(--gap-distance);
+    position: absolute;
+    background: white;
+    border: 1px solid gray;
+    min-height: fit-content;
+    min-width: fit-content;
+    display: none;
     z-index: 2;
 }
 
+.schedule-row__color-dropdown--open{
+    display: block;
+}
+
 .schedule-row__content{
-    margin-left: calc(var(--row-height) + 0.25rem);
     flex: 3;
     min-width: 0;
     height: var(--row-height);
@@ -120,4 +157,5 @@ a{
 
 #add-schedule-row{
     margin: 0.5rem;
+    width: 98%;
 }

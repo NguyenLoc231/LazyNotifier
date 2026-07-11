@@ -31,7 +31,25 @@
 
             <div id="schedule-list">
                 <div id="schedule-row-container">
-                    
+                    <div class="schedule-row">
+                        <div class="schedule-row__color">
+                            <button type="button" class="schedule-row__color-display">
+
+                            </button>
+                            <div class="schedule-row__color-dropdown">
+                                <button type="button" data-color="#FAFAFA">⬜ White</button>
+                                <button type="button" data-color="#ffff62">🟨 Yellow</button>
+                                <button type="button" data-color="#FF1744">🟥 Red</button>
+                            </div>
+                        </div>
+                        
+                        <input class="schedule-row__content" type="text" placeholder="Nhập nội dung">
+                        <input class="schedule-row__time" type="time">
+                        <input class="schedule-row__deadline" type="date">
+                        <button class="schedule-row__notify" type="button">O</button>
+                        <button class="schedule-row__delete" type="button">X</button>
+                    </div>
+
                 </div>
  
                 <button id="add-schedule-row">add new</button>

@@ -43,18 +43,54 @@ const scheduleRowContainer = document.getElementById('schedule-row-container');
 
 let rowCounter = 0;
 
-function createScheduleRowColor(rowCounter){
-  const scheduleRowColor = document.createElement('div');
+function createScheduleRowColorDisplay(){
+  const scheduleRowColorDisplay = document.createElement('button');
+  scheduleRowColorDisplay.type = 'button';
+  scheduleRowColorDisplay.classList.add('schedule-row__color-display');
+  scheduleRowColorDisplay.addEventListener('click', openScheduleRowColorDropdown);
+
+  return scheduleRowColorDisplay;
+}
+
+function createScheduleRowColorDropdown(){
+  const scheduleRowColorDropdown = document.createElement('div');
+  scheduleRowColorDropdown.classList.add('schedule-row__color-dropdown');
   const rowColor = [{name: 'WHITE', color: '#FAFAFA'}, {name: 'YELLOW', color: '#ffff62'}, {name: 'RED', color: '#FF1744'}];
-  scheduleRowColor.classList.add('schedule-row__color');
-  let html = `
-    <label><input type="radio" name="choose-color-${rowCounter}" value="${rowColor[0].color}" class="schedule-row__color-input">${rowColor[0].name}</label>
-    <br>
-    <label><input type="radio" name="choose-color-${rowCounter}" value="${rowColor[1].color}" class="schedule-row__color-input">${rowColor[1].name}</label>
-    <br>
-    <label><input type="radio" name="choose-color-${rowCounter}" value="${rowColor[2].color}" class="schedule-row__color-input">${rowColor[2].name}</label>
+  for (const item of rowColor){
+    const scheduleRowColorButton = document.createElement('button');
+    scheduleRowColorButton.type = 'button';
+    scheduleRowColorButton.dataset.color = item.color;
+    scheduleRowColorButton.textContent = item.name;
+    scheduleRowColorButton.addEventListener('click', takeScheduleColor);
+    scheduleRowColorDropdown.appendChild(scheduleRowColorButton);
+
+  }
+  /* let html = `                  
+    <button type="button" class="take-schedule-color" data-color="#FAFAFA">⬜ White</button>
+    <button type="button" class="take-schedule-color" data-color="#ffff62">🟨 Yellow</button>
+    <button type="button" class="take-schedule-color" data-color="#FF1744">🟥 Red</button>
   `;
-  scheduleRowColor.innerHTML = html;
+  scheduleRowColorDropdown.innerHTML = html; */
+  return scheduleRowColorDropdown;
+}
+
+function openScheduleRowColorDropdown(event){
+  const dropdown = event.target.closest('.schedule-row__color').querySelector('.schedule-row__color-dropdown');
+  dropdown.classList.toggle('schedule-row__color-dropdown--open');
+}
+
+function takeScheduleColor(event){
+  const scheduleRowColorDisplay = event.target.closest('.schedule-row__color').querySelector('.schedule-row__color-display')
+  const color = event.target.dataset.color;
+  scheduleRowColorDisplay.style.backgroundColor = color;
+}
+
+function createScheduleRowColor(){
+  const scheduleRowColor = document.createElement('div');
+  scheduleRowColor.classList.add('schedule-row__color');
+  scheduleRowColor.appendChild(createScheduleRowColorDisplay());
+  scheduleRowColor.appendChild(createScheduleRowColorDropdown());
+
   return scheduleRowColor;
 }
 
@@ -123,3 +159,11 @@ function createScheduleRow(){
 
 const addNewScheduleRow = document.getElementById('add-schedule-row');
 addNewScheduleRow.addEventListener('click', createScheduleRow);
+
+document.addEventListener('click', function(event) {
+    // Nếu click KHÔNG nằm trong bất kỳ color nào → đóng tất cả dropdown
+    if (!event.target.closest('.schedule-row__color')) {
+        document.querySelectorAll('.schedule-row__color-dropdown--open')
+            .forEach(dropdown => dropdown.classList.remove('schedule-row__color-dropdown--open'));
+    }
+});
