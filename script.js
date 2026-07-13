@@ -55,7 +55,7 @@ function createScheduleRowColorDisplay(){
 function createScheduleRowColorDropdown(){
   const scheduleRowColorDropdown = document.createElement('div');
   scheduleRowColorDropdown.classList.add('schedule-row__color-dropdown');
-  const rowColor = [{name: 'WHITE', color: '#FAFAFA'}, {name: 'YELLOW', color: '#ffff62'}, {name: 'RED', color: '#FF1744'}];
+  const rowColor = [{name: 'WHITE', color: '#FAFAFA'}, {name: 'YELLOW', color: '#FFD700'}, {name: 'RED', color: '#FF1744'}];
   for (const item of rowColor){
     const scheduleRowColorButton = document.createElement('button');
     scheduleRowColorButton.type = 'button';
@@ -63,20 +63,14 @@ function createScheduleRowColorDropdown(){
     scheduleRowColorButton.textContent = item.name;
     scheduleRowColorButton.addEventListener('click', takeScheduleColor);
     scheduleRowColorDropdown.appendChild(scheduleRowColorButton);
-
   }
-  /* let html = `                  
-    <button type="button" class="take-schedule-color" data-color="#FAFAFA">⬜ White</button>
-    <button type="button" class="take-schedule-color" data-color="#ffff62">🟨 Yellow</button>
-    <button type="button" class="take-schedule-color" data-color="#FF1744">🟥 Red</button>
-  `;
-  scheduleRowColorDropdown.innerHTML = html; */
+
   return scheduleRowColorDropdown;
 }
 
 function openScheduleRowColorDropdown(event){
-  const dropdown = event.target.closest('.schedule-row__color').querySelector('.schedule-row__color-dropdown');
-  dropdown.classList.toggle('schedule-row__color-dropdown--open');
+  const colorDropdown = event.target.closest('.schedule-row__color').querySelector('.schedule-row__color-dropdown');
+  colorDropdown.classList.toggle('schedule-row__color-dropdown--open');
 }
 
 function takeScheduleColor(event){
@@ -105,22 +99,40 @@ function createScheduleRowContent(){
 function createScheduleRowTime(){
   const newScheduleRowTime = document.createElement('input');
   newScheduleRowTime.classList.add('schedule-row__time');
-  newScheduleRowTime.type = 'time';
+  newScheduleRowTime.type = 'text';
+  newScheduleRowTime.placeholder = '10h37';
+  newScheduleRowTime.addEventListener('focus', function() {
+    this.type='time';
+    this.classList.add('schedule-row__time-onfocus');
+  });
+  newScheduleRowTime.addEventListener('blur', function() {
+    this.type='text';
+    this.classList.remove('schedule-row__time-onfocus');
+  });
   return newScheduleRowTime;
 }
 
-function createScheduleRowDeadline(){
+function createScheduleRowDate(){
   const newScheduleRowDate = document.createElement('input');
-  newScheduleRowDate.classList.add('schedule-row__deadline');
-  newScheduleRowDate.type = 'date';
+  newScheduleRowDate.classList.add('schedule-row__date');
+  newScheduleRowDate.type = 'text';
+  newScheduleRowDate.placeholder = '10/07/2026';
+  newScheduleRowDate.addEventListener('focus', function() {
+    this.type='date';
+    this.classList.add('schedule-row__date-onfocus');
+  });
+  newScheduleRowDate.addEventListener('blur', function() {
+    this.type='text';
+    this.classList.remove('schedule-row__date-onfocus');
+  });
   return newScheduleRowDate;
 }
 
 function createScheduleRowNotify(){
-  const newScheduleRowNotify = document.createElement('input');
+  const newScheduleRowNotify = document.createElement('button');
   newScheduleRowNotify.classList.add('schedule-row__notify');
-  newScheduleRowNotify.type = 'checkbox';
-  newScheduleRowNotify.checked = true;
+  newScheduleRowNotify.type = 'button';
+  newScheduleRowNotify.textContent = 'O';
   return newScheduleRowNotify;
 }
 
@@ -137,18 +149,54 @@ function createScheduleRowDelete(){
   return newScheduleRowDelete;
 }
 
+function createScheduleRowMenuButton(){
+  const newScheduleRowMenuButton = document.createElement('button');
+  newScheduleRowMenuButton.classList.add('schedule-row__menu-button');
+  newScheduleRowMenuButton.type = 'button';
+  newScheduleRowMenuButton.innerHTML = `O<br>O<br>O`;
+  newScheduleRowMenuButton.addEventListener('click', openScheduleRowMenuDropdown);
+  return newScheduleRowMenuButton;
+}
+
+function createScheduleRowMenuDropdown(){
+  const newScheduleRowMenuDropdown = document.createElement('div');
+  newScheduleRowMenuDropdown.classList.add('schedule-row__menu-dropdown');
+  newScheduleRowMenuDropdown.appendChild(createScheduleRowMenuDropdownContainer());
+  return newScheduleRowMenuDropdown;
+}
+
+function openScheduleRowMenuDropdown(event){
+  const menuDropdown = event.target.closest('.schedule-row__menu').querySelector('.schedule-row__menu-dropdown');
+  menuDropdown.classList.toggle('schedule-row__menu-dropdown--open');
+}
+
+function createScheduleRowMenuDropdownContainer(){
+  const newScheduleRowMenuDropdownContainer = document.createElement('div');
+  newScheduleRowMenuDropdownContainer.classList.add('schedule-row__menu-dropdown-container');
+  newScheduleRowMenuDropdownContainer.appendChild(createScheduleRowColor());
+  newScheduleRowMenuDropdownContainer.appendChild(createScheduleRowNotify());
+  newScheduleRowMenuDropdownContainer.appendChild(createScheduleRowDelete());
+  return newScheduleRowMenuDropdownContainer;
+}
+
+function createScheduleRowMenu(){
+  const newScheduleRowMenu = document.createElement('div');
+  newScheduleRowMenu.classList.add('schedule-row__menu');
+  newScheduleRowMenu.appendChild(createScheduleRowMenuButton());
+  newScheduleRowMenu.appendChild(createScheduleRowMenuDropdown());
+  return newScheduleRowMenu;
+}
+
 function createScheduleRow(){
   rowCounter++;
 
   const newScheduleRow = document.createElement('div');
   newScheduleRow.classList.add('schedule-row');
 
-  newScheduleRow.appendChild(createScheduleRowColor(rowCounter));
-  newScheduleRow.appendChild(createScheduleRowContent());
   newScheduleRow.appendChild(createScheduleRowTime());
-  newScheduleRow.appendChild(createScheduleRowDeadline());
-  newScheduleRow.appendChild(createScheduleRowNotify());
-  newScheduleRow.appendChild(createScheduleRowDelete());
+  newScheduleRow.appendChild(createScheduleRowContent());
+  newScheduleRow.appendChild(createScheduleRowDate());
+  newScheduleRow.appendChild(createScheduleRowMenu());
 
   scheduleRowContainer.appendChild(newScheduleRow);
 
@@ -163,7 +211,12 @@ addNewScheduleRow.addEventListener('click', createScheduleRow);
 document.addEventListener('click', function(event) {
     // Nếu click KHÔNG nằm trong bất kỳ color nào → đóng tất cả dropdown
     if (!event.target.closest('.schedule-row__color')) {
-        document.querySelectorAll('.schedule-row__color-dropdown--open')
-            .forEach(dropdown => dropdown.classList.remove('schedule-row__color-dropdown--open'));
+      document.querySelectorAll('.schedule-row__color-dropdown--open')
+        .forEach(dropdown => dropdown.classList.remove('schedule-row__color-dropdown--open'));
+    }
+
+    if (!event.target.closest('.schedule-row__menu')) {
+      document.querySelectorAll('.schedule-row__menu-dropdown--open')
+        .forEach(dropdown => dropdown.classList.remove('schedule-row__menu-dropdown--open'));
     }
 });
