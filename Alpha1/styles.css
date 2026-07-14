@@ -210,3 +210,10 @@ button {
     width: 98%;
     margin: 0.5rem;
 }
+
+@media (max-width: 500px) {
+    #schedule-list {
+        width: 100vw;       /* full width trên mobile */
+    }
+
+}

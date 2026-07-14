@@ -36,9 +36,9 @@
                 <div id="schedule-row-container">
                     <!-- html để trực quan cho tôi, phần nào generate bằng js đc thì tôi sẽ xóa sau khi dự án hoàn thành --> 
                     <div class="schedule-row">    
-                        <input class="schedule-row__time" type="text" placeholder="7h30" onfocus="(this.type='time')(this.classList.add('schedule-row__time-onfocus'))" onblur="(this.type='text')(this.classList.remove('schedule-row__time-onfocus'))">                 
+                        <input class="schedule-row__time" type="text">                 
                         <input class="schedule-row__content" type="text" placeholder="Nhập nội dung">
-                        <input class="schedule-row__date" type="text" placeholder="7h30" onfocus="(this.type='date')(this.classList.add('schedule-row__date-onfocus'))" onblur="(this.type='text')(this.classList.remove('schedule-row__date-onfocus'))">
+                        <input class="schedule-row__date" type="text">
                         <div class="schedule-row__menu">
                             <button class="schedule-row__menu-button" type="button">O<br>O<br>O</button>
                             <div class="schedule-row__menu-dropdown">
@@ -77,7 +77,7 @@
         </section>
 
     </main>
-    <script src="script.js"></script>
+    <script type="module" src="index.js"></script>
 </body>
 
 </html>
