@@ -32,35 +32,34 @@
                 <button type="button">move to the next day</button>
             </div>
 
-            <div id="schedule-list">
-                <div id="schedule-row-container">
-                    <template id="schedule-row-template">
-                        <div class="schedule-row">    
-                            <input class="schedule-row__time" type="text" placeholder="7h30">                 
-                            <input class="schedule-row__content" type="text" placeholder="Nhập nội dung">
-                            <input class="schedule-row__date" type="text" placeholder="12/07/2026">
-                            <div class="schedule-row__menu">
-                                <button class="schedule-row__menu-button" type="button">O<br>O<br>O</button>
-                                <div class="schedule-row__menu-dropdown">
-                                    <div class="schedule-row__menu-dropdown-container">
-                                        <div class="schedule-row__color">
-                                            <button type="button" class="schedule-row__color-display">
+            <div id="schedule__list">
+                <div id="list__container">
+                    <template id="schedule__row--template">
+                        <div class="schedule__row">    
+                            <input class="row__time" type="text" placeholder="07:30">                 
+                            <input class="row__content" type="text" placeholder="Nhập nội dung">
+                            <input class="row__date" type="text" placeholder="12-07-2026">
+                            <div class="row__menu">
+                                <button class="menu__button" type="button">O<br>O<br>O</button>
+                                <div class="menu__dropdown">
+                                    <div class="dropdown__container">
+                                        <div class="row__color">
+                                            <button type="button" class="color__button">
                                             </button>
-                                            <div class="schedule-row__color-dropdown">
-                                                <button type="button" data-color="#FAFAFA">⬜ White</button>
-                                                <button type="button" data-color="#ffff62">🟨 Yellow</button>
-                                                <button type="button" data-color="#FF1744">🟥 Red</button>
+                                            <div class="color__dropdown">
+                                                <button class="color__taker" type="button" data-color="#FAFAFA">⬜ White</button>
+                                                <button class="color__taker" type="button" data-color="#ffff62">🟨 Yellow</button>
+                                                <button class="color__taker" type="button" data-color="#FF1744">🟥 Red</button>
                                             </div>
                                         </div>
-                                        <button class="schedule-row__notify" type="button">O</button>
-                                        <button class="schedule-row__delete" type="button">X</button>
+                                        <button class="row__notify" type="button">O</button>
+                                        <button class="row__delete" type="button">X</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </template>
                     <!-- html để trực quan cho tôi, phần nào generate bằng js đc thì tôi sẽ xóa sau khi dự án hoàn thành --> 
-
 
                 </div>
  

@@ -60,7 +60,7 @@ button {
 
 /* === Main === */
 
-#schedule-list{
+#schedule__list{
     width: 90vw;
     height: 60vh; 
     background-color: darkgrey;
@@ -70,22 +70,23 @@ button {
     overflow: auto;
 }
 
-#schedule-row-container{
+#list__container{
     width: 98%;
 }
 
-.schedule-row{
+.schedule__row{
     margin: var(--gap-distance) 0;
     background-color: white;
     min-height: fit-content;
     min-width: fit-content;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     position: relative;
     gap: var(--gap-distance);
 }
 
-.schedule-row *{
+.schedule__row *{
     background-color: transparent;
     border: none;
     border-radius: 0.1rem;
@@ -93,18 +94,18 @@ button {
     min-width: var(--row-height);
 }
 
-.schedule-row button{
+.schedule__row button{
     background-color: white;
     border: 0.1rem solid black;
 }
 
-.schedule-row__color{
+.row__color{
     background-color: white;
     border: 0.1rem solid black;
     position: relative;
 }
 
-.schedule-row__color-display{    
+.color__button{    
     position: absolute;
     background-color: white;
     border: 0.1rem solid black;
@@ -117,7 +118,7 @@ button {
     overflow: hidden;
 }
 
-.schedule-row__color-dropdown{
+.color__dropdown{
     top: 100%;
     right: 0%;
     padding: var(--gap-distance);
@@ -130,46 +131,48 @@ button {
     z-index: 2;
 }
 
-.schedule-row__color-dropdown--open{
+.color__dropdown--open{
     display: block;
 }
 
-.schedule-row__content{
+.row__content{
     flex: 1;
 }
 
-.schedule-row__time{
+.row__time{
     max-width: 3rem;
+    text-align: center;
 }
 
-.schedule-row__time-onfocus{
+.row__time--onfocus{
     max-width: fit-content;
+    text-align: right;
 }
 
-.schedule-row__date{
+.row__date{
     text-align: right;
     max-width: 4.5rem;
 }
 
-.schedule-row__date-onfocus{
-    max-width: fit-content;
+.row__date--onfocus{
+    max-width: 6rem;
 }
 
-.schedule-row__notify{
+.row__notify{
     
 }
 
-.schedule-row__delete{
+.row__delete{
 
 }
 
-.schedule-row__menu{
+.row__menu{
     min-height: fit-content;
     min-width: fit-content;
     position: relative;
 }
 
-.schedule-row__menu-button{
+.menu__button{
     font-family: "Elms Sans", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
@@ -180,7 +183,7 @@ button {
     line-height: 0.5rem;
 }
 
-.schedule-row__menu-dropdown{
+.menu__dropdown{
     top: calc(-1 * var(--gap-distance));
     right: 100%;
     padding: var(--gap-distance);
@@ -193,11 +196,11 @@ button {
     z-index: 2;
 }
 
-.schedule-row__menu-dropdown--open{
+.menu__dropdown--open{
     display: block;
 }
 
-.schedule-row__menu-dropdown-container{
+.dropdown__container{
     display: flex;
     flex-direction: row;
     gap: var(--gap-distance);
@@ -212,7 +215,7 @@ button {
 }
 
 @media (max-width: 500px) {
-    #schedule-list {
+    #schedule__list {
         width: 100vw;       /* full width trên mobile */
     }
 
