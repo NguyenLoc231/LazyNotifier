@@ -54,6 +54,10 @@ function colorTaker(event){
   if(event.target.classList.contains('color__taker')){
     event.target.closest('.row__color').querySelector('.color__button')
     .style.backgroundColor = event.target.dataset.color;
+    event.target.closest('.menu__dropdown')
+    .style.backgroundColor = event.target.dataset.color;
+    event.target.closest('.schedule__row')
+    .style.backgroundColor = event.target.dataset.color;
   }
 }
 
