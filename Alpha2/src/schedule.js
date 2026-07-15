@@ -1,9 +1,17 @@
+import { ListData } from "./data.js";
+import { ScheduleData } from "./data.js";
+
+const newlist = new ListData();
+
+function getRowId(event) { return event.target.closest('.schedule__row').dataset.id;}
+
+
 function createScheduleRow(){
   const template = document.getElementById('schedule__row--template');
   const newRow = template.content.cloneNode(true);
-
+  newRow.querySelector('.schedule__row').dataset.id = newlist.getListLength();
+  newlist.setSchedule(ScheduleData, newlist.getListLength());
   document.getElementById('list__container').appendChild(newRow);
-
 }
 
 // ===== focus in =====
@@ -22,13 +30,18 @@ function focusin(event){
 // ===== focus out =====
 
 function focusout(event){
+  if(event.target.classList.contains('row__content')){
+    newlist.setScheduleContent(event.target.value, getRowId(event));
+  }
   if(event.target.classList.contains('row__time')){
     event.target.type = 'text';
     event.target.classList.remove('row__time--onfocus');
+    newlist.setScheduleTime(event.target.value, getRowId(event));
   }
   if(event.target.classList.contains('row__date')){
     event.target.type = 'text';
     event.target.classList.remove('row__date--onfocus');
+    newlist.setScheduleDate(event.target.value, getRowId(event));
   }
 }
 
@@ -58,6 +71,17 @@ function colorTaker(event){
     .style.backgroundColor = event.target.dataset.color;
     event.target.closest('.schedule__row')
     .style.backgroundColor = event.target.dataset.color;
+    newlist.setScheduleColor(event.target.dataset.color, getRowId(event));
+  }
+}
+
+// ===== row notify =====
+
+function notifyTaker(event){
+  if(event.target.classList.contains('row__notify')){
+    newlist.getListLength();
+    newlist.setScheduleNotify(true, getRowId(event));
+    newlist.getScheduleIndex(getRowId(event));
   }
 }
 
@@ -66,6 +90,12 @@ function colorTaker(event){
 function deleteRow(event){
   if(event.target.classList.contains('row__delete')){
     event.target.closest('.schedule__row').remove();
+    newlist.deleteSchedule(getRowId(event));
+    document.querySelectorAll('.schedule__row').forEach(row => {
+      if(row.dataset.id > getRowId(event)){
+        row.dataset.id --;
+      }
+    })
   }
 }
 
@@ -74,8 +104,9 @@ function deleteRow(event){
 function handleListClick(event){
   openMenuDropdown(event);
   openColorDropdown(event);
-  deleteRow(event);
   colorTaker(event);
+  notifyTaker(event);
+  deleteRow(event);
 }
 
 // ===== schedule list =====

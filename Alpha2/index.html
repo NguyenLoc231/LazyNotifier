@@ -34,31 +34,7 @@
 
             <div id="schedule__list">
                 <div id="list__container">
-                    <template id="schedule__row--template">
-                        <div class="schedule__row">    
-                            <input class="row__time" type="text" placeholder="07:30">                 
-                            <input class="row__content" type="text" placeholder="Nhập nội dung">
-                            <input class="row__date" type="text" placeholder="12-07-2026">
-                            <div class="row__menu">
-                                <button class="menu__button" type="button">O<br>O<br>O</button>
-                                <div class="menu__dropdown">
-                                    <div class="dropdown__container">
-                                        <div class="row__color">
-                                            <button type="button" class="color__button">
-                                            </button>
-                                            <div class="color__dropdown">
-                                                <button class="color__taker" type="button" data-color="#FAFAFA">⬜ White</button>
-                                                <button class="color__taker" type="button" data-color="#ffff62">🟨 Yellow</button>
-                                                <button class="color__taker" type="button" data-color="#FF1744">🟥 Red</button>
-                                            </div>
-                                        </div>
-                                        <button class="row__notify" type="button">O</button>
-                                        <button class="row__delete" type="button">X</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </template>
+
                     <!-- html để trực quan cho tôi, phần nào generate bằng js đc thì tôi sẽ xóa sau khi dự án hoàn thành --> 
 
                 </div>
@@ -76,6 +52,32 @@
             <h2>Contact</h2>
             <p>You can contact me at <a href="mailto:example@email.com">example@email.com</a></p>
         </section>
+
+        <template id="schedule__row--template">
+            <div class="schedule__row" data-id="">    
+                <input class="row__time" name="row-time" type="text" placeholder="07:30">                 
+                <input class="row__content" name="row-content" type="text" placeholder="Nhập nội dung">
+                <input class="row__date" name="row-date" type="text" placeholder="12-07-2026">
+                <div class="row__menu">
+                    <button class="menu__button" type="button">O<br>O<br>O</button>
+                    <div class="menu__dropdown">
+                        <div class="dropdown__container">
+                            <div class="row__color">
+                                <button type="button" class="color__button">
+                                </button>
+                                <div class="color__dropdown">
+                                    <button class="color__taker" type="button" data-color="#FAFAFA">⬜ White</button>
+                                    <button class="color__taker" type="button" data-color="#ffff62">🟨 Yellow</button>
+                                    <button class="color__taker" type="button" data-color="#FF1744">🟥 Red</button>
+                                </div>
+                            </div>
+                            <button class="row__notify" type="button">O</button>
+                            <button class="row__delete" type="button">X</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
 
     </main>
     <script type="module" src="index.js"></script>

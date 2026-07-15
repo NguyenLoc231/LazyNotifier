@@ -4,8 +4,6 @@ const topNavbar = document.getElementById("top-nav-bar");
 
 const navbarHeight = topNavbar.offsetHeight;
 
-console.log(navbarHeight);
-
 document.body.style.marginTop = navbarHeight + "px";
 
 /*
@@ -34,4 +32,4 @@ const targetElement = document.querySelector('.my-box');
 
 // 3. Bắt đầu theo dõi
 observer.observe(targetElement);
-*/
+*/
