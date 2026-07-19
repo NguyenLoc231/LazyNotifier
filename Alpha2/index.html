@@ -20,16 +20,15 @@
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
-        <h1>Schedule Reminder</h1>
     </header>
 
     <main>
         <section id="home">
-            <h2>Mi Schedule</h2>
-            <div>
-                <button type="button">move to the previous day</button><br>
-                <input type="date" name="date" required><br>
-                <button type="button">move to the next day</button>
+            <h1>Mi Schedule</h1>
+            <div id="list__head">
+                <button type="button">&lt</button>
+                <input id="list__date" type="text" name="date" required>
+                <button type="button">&gt</button>
             </div>
 
             <div id="schedule__list">
@@ -45,19 +44,20 @@
 
         <section id="about">
             <h2>About</h2>
-            <p>This section contains information about me.</p>
+            <p> Year 2 IT student from International University.</p>
         </section>
 
         <section id="contact">
             <h2>Contact</h2>
-            <p>You can contact me at <a href="mailto:example@email.com">example@email.com</a></p>
+            <p>You can contact me at <a href="mailto: ITITIU25018@student.hcmiu.edu.vn">example@email.com</a></p>
         </section>
+        <button id="clear-storage" onclick="localStorage.clear()">Clear Storage</button>
 
         <template id="schedule__row--template">
             <div class="schedule__row" data-id="">    
-                <input class="row__time" name="row-time" type="text" placeholder="07:30">                 
+                <input class="row__time" name="row-time" type="text" value="07:00">                 
                 <input class="row__content" name="row-content" type="text" placeholder="Nhập nội dung">
-                <input class="row__date" name="row-date" type="text" placeholder="12-07-2026">
+                <input class="row__date" name="row-date" type="text" placeholder="00-00-0000">
                 <div class="row__menu">
                     <button class="menu__button" type="button">O<br>O<br>O</button>
                     <div class="menu__dropdown">
@@ -71,14 +71,29 @@
                                     <button class="color__taker" type="button" data-color="#FF1744">🟥 Red</button>
                                 </div>
                             </div>
-                            <button class="row__notify" type="button">O</button>
+                            <button class="row__notify" type="button" data-notify="true">
+                                <svg class="icon-bell" viewBox="0 0 24 24">
+                                    <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1-1.5-1s-1.5.17-1.5 1v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/>
+                                </svg>
+                            </button>
                             <button class="row__delete" type="button">X</button>
                         </div>
                     </div>
                 </div>
             </div>
         </template>
-
+<!--
+        <template id="normal-bell">
+            <svg class="icon-bell" viewBox="0 0 24 24">
+                <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1-1.5-1s-1.5.17-1.5 1v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/>
+            </svg>
+        </template>
+        <template id="slash-bell">
+            <svg class="icon-bell" viewBox="0 0 24 24">
+                <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-11c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1-1.5-1s-1.5.17-1.5 1v.68C9.72 5.3 8.64 6.42 8 7.84v.02l9.9 9.9M2.27 2.27L1 3.54l4.25 4.25C5.1 8.84 5 9.9 5 11v5l-2 2v1h13.73l4.25 4.25 1.27-1.27L2.27 2.27z"/>
+            </svg>
+        </template>
+-->        
     </main>
     <script type="module" src="index.js"></script>
 </body>

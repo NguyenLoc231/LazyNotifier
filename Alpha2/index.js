@@ -1,2 +1,3 @@
-import * as design from './src/design.js';
-import * as schedule from './src/schedule.js';
+import './src/design.js';
+import './src/schedule.js';
+import './src/date.js';
